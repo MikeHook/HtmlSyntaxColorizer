@@ -1,0 +1,32 @@
+<html><body><pre style='font-size: small; font-family: Consolas, "Courier New", Courier, Monospace; width:100%;overflow:auto;border:1px dashed #999999;background-color:#eeeeee;margin: 0em;'>
+<span style='color: #0000ff; font-weight: bold; '>Feature</span>: Select ticket agent
+&nbsp;&nbsp;&nbsp;&nbsp;As a music fan
+&nbsp;&nbsp;&nbsp;&nbsp;I would like to select the ticket agent that should receive my order
+&nbsp;&nbsp;&nbsp;&nbsp;so that my order is sent to an appropriate ticket agent
+
+<span style='color: #0000ff; font-weight: bold; '>Background</span>:
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Given</span>&nbsp;Ticket Agents
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Agent Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|HandlesLondonEvents&nbsp;&nbsp;&nbsp;&nbsp;|Provides VIP tickets&nbsp;&nbsp;&nbsp;&nbsp;|
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Loud events Ltd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|False&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|Exclusive event Ltd&nbsp;&nbsp;&nbsp;&nbsp;|False&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|VIP South events Ltd&nbsp;&nbsp;&nbsp;&nbsp;|True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|True&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+
+<span style='color: #0000ff; font-weight: bold; '>Scenario</span>: Select VIP ticket agent in London
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Given</span>&nbsp;an order for a london event
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>And</span>&nbsp;and a VIP ticket type
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>When</span>&nbsp;i select the ticket agent
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Then</span>&nbsp;the ticket agent should be VIP South events Ltd
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span style='color: #0000ff; font-weight: bold; '>Scenario</span>: Select non VIP ticket agent in London
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Given</span>&nbsp;an order for a london event
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>And</span>&nbsp;and a non VIP ticket type
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>When</span>&nbsp;i select the ticket agent
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Then</span>&nbsp;the ticket agent should be Loud events Ltd
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span style='color: #0000ff; font-weight: bold; '>Scenario</span>: Select VIP ticket agent outside London
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Given</span>&nbsp;an order for an event outside london
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>And</span>&nbsp;and a VIP ticket type
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>When</span>&nbsp;i select the ticket agent
+&nbsp;&nbsp;&nbsp;&nbsp;<span style='color: #0000ff; font-weight: bold; '>Then</span>&nbsp;the ticket agent should be Exclusive event Ltd
+</pre>
+</body></html>

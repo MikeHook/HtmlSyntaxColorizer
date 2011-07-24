@@ -1,0 +1,29 @@
+﻿Feature: Select ticket agent
+	As a music fan
+	I would like to select the ticket agent that should receive my order
+	so that my order is sent to an appropriate ticket agent
+
+Background:
+	Given Ticket Agents
+		|Agent Name				|HandlesLondonEvents	|Provides VIP tickets	|
+		|Loud events Ltd		|True					|False					|
+		|Exclusive event Ltd	|False					|True					|
+		|VIP South events Ltd	|True					|True					|
+
+Scenario: Select VIP ticket agent in London
+	Given an order for a london event
+	And and a VIP ticket type
+	When i select the ticket agent
+	Then the ticket agent should be VIP South events Ltd
+	
+Scenario: Select non VIP ticket agent in London
+	Given an order for a london event
+	And and a non VIP ticket type
+	When i select the ticket agent
+	Then the ticket agent should be Loud events Ltd
+	
+Scenario: Select VIP ticket agent outside London
+	Given an order for an event outside london
+	And and a VIP ticket type
+	When i select the ticket agent
+	Then the ticket agent should be Exclusive event Ltd
