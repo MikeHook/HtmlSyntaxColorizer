@@ -1,0 +1,4 @@
+Generates styled HTML from a plain text Gherkin file.
+- Keywords are highlighted
+- tabs are converted to spaces
+- fonts and background are set
